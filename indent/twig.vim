@@ -50,11 +50,11 @@ function! s:FindPreviousOpenStructure(lineNumber)
 endfunction
 
 function! s:StartStructure(name)
-	return '^\s*{%\s*' . a:name . '.*%}'
+  return '^\(.*{%\s*end' . a:name . '.*%}\)\@!.*{%\s*' . a:name . '.*%}'
 endfunction
 
 function! s:EndStructure(name)
-	return '^\s*{%\s*end' . a:name . '.*%}'
+  return '^\(.*{%\s*' . a:name . '.*%}\)\@!.*{%\s*end' . a:name . '.*%}'
 endfunction
 
 function! s:Map(Fun, list)
